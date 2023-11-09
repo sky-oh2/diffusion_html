@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose Font</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+      margin-top: 100px;
+    }
+
+    .title-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+    }
+
+    .text-box {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 20px auto;
+    }
+
+    .instructions {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .font-selector {
+      width: 50%;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: auto;
+    }
+
+    .font-selector select {
+      width: 100%;
+      height: 40px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .show-button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .letter-display {
+      font-size: 36px;
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .next-button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background-color 0.3s; 
+    }
+
+    .next-button:hover {
+      background-color: #2976be; 
+    }
+  </style>
+</head>
+
+<body>
+  <a href="main.html" class="title-link">
+    <h1 class="title-label">Design Your Logo</h1>
+  </a>
+  <p class="instructions">Enter the text (such as a company name) that you want to place in the logo image.</p>
+  <input type="text" class="text-box" placeholder="Enter text here (ex. Banana Company)">
+  <div class="font-selector" id="fontSelector">
+    <select id="fontSelect" onchange="selectFont()">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="Helvetica, sans-serif">Helvetica</option>
+        <option value="Times New Roman, serif">Times New Roman</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="Courier New, monospace">Courier New</option>
+        <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+        <option value="Tahoma, sans-serif">Tahoma</option>
+        <option value="Impact, sans-serif">Impact</option>
+        <option value="Comic Sans MS, cursive">Comic Sans MS</option>
+        <option value="Lucida Sans Unicode, sans-serif">Lucida Sans Unicode</option>
+        <option value="Palatino Linotype, serif">Palatino Linotype</option>
+        <option value="Garamond, serif">Garamond</option>
+        <option value="Book Antiqua, serif">Book Antiqua</option>
+        <option value="MS Serif, serif">MS Serif</option>
+        <option value="MS Sans Serif, sans-serif">MS Sans Serif</option>
+        <option value="MS Gothic, sans-serif">MS Gothic</option>
+        <option value="MS UI Gothic, sans-serif">MS UI Gothic</option>
+        <option value="MS PGothic, sans-serif">MS PGothic</option>
+        <option value="MS PMincho, serif">MS PMincho</option>
+        <option value="SimSun, sans-serif">SimSun</option>
+        <option value="SimHei, sans-serif">SimHei</option>
+        <option value="PMingLiU, serif">PMingLiU</option>
+        <option value="MingLiU, serif">MingLiU</option>
+        <option value="PMingLiU-ExtB, serif">PMingLiU-ExtB</option>
+        <option value="MingLiU-ExtB, serif">MingLiU-ExtB</option>
+      </select>
+  </div>
+  <button class="show-button" onclick="showLetter()">Show</button>
+  <div class="letter-display" id="letterDisplay">Your text with the selected font</div>
+
+  <script>
+    
+    function selectFont() {
+      const fontSelect = document.getElementById('fontSelect');
+      const selectedFont = fontSelect.value;
+      const letterDisplay = document.getElementById('letterDisplay');
+      letterDisplay.style.fontFamily = selectedFont;
+    }
+
+    
+    function showLetter() {
+      const text = document.querySelector('.text-box').value;
+      const letterDisplay = document.getElementById('letterDisplay');
+      letterDisplay.textContent = text;
+    }
+  </script>
+  <a href="generate.html">
+    <button class="next-button">Next Step</button>
+  </a>
+</body>
+</html>
