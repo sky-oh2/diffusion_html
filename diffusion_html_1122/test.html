@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Page</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+
+    select {
+      font-family: '나눔고딕', 'Nanum Gothic', sans-serif;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-family: '나눔고딕', 'Nanum Gothic', sans-serif;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <select id="fontSelect" onchange="selectFont()">
+    <option value="'나눔고딕', 'Nanum Gothic', sans-serif">나눔고딕</option>
+    <option value="'맑은 고딕', 'Malgun Gothic', sans-serif">맑은 고딕</option>
+    <option value="'굴림', 'Gulim', sans-serif">굴림</option>
+    <option value="'돋움', 'Dotum', sans-serif">돋움</option>
+    <option value="'바탕', 'Batang', serif">바탕</option>
+    <option value="'함초롬돋움', 'HCR Dotum', sans-serif">함초롬돋움</option>
+  </select>
+
+  <p id="displayText">안녕하세요</p>
+
+  <script>
+    function selectFont() {
+      const fontSelect = document.getElementById('fontSelect');
+      const selectedFont = fontSelect.value;
+      const displayText = document.getElementById('displayText');
+      displayText.style.fontFamily = selectedFont;
+    }
+  </script>
+</body>
+</html>

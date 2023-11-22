@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Font</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .title-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .text-box {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            margin: 20px auto;
+        }
+
+        .instructions {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .font-selector {
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+        .font-selector select {
+            width: 100%;
+            height: 40px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .letter-display {
+            font-size: 36px;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .next-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #2976be;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="main.html" class="title-link">
+        <h1 class="title-label">Design Your Logo</h1>
+    </a>
+    <p class="instructions">Enter the text (such as a company name) that you want to place in the logo image.</p>
+    <input type="text" class="text-box" placeholder="Enter text here (ex. Banana Company)">
+    <div class="font-selector" id="fontSelector">
+        <select id="fontSelect" onchange="selectFont()">
+            <option value="Roboto">Roboto</option>
+            <option value="OpenSans">Open Sans</option>
+            <option value="Poppins">Poppins</option>
+            <option value="Lato">Lato</option>
+            <option value="Inter">Inter</option>
+            <option value="Oswald">Oswald</option>
+            <option value="PlayfairDisplay">Playfair Display</option>
+            <option value="Ubuntu">Ubuntu</option>
+            <option value="Rubik">Rubik</option>
+            <option value="Kanit">Kanit</option>
+            <option value="NotoSansKR">Noto Sans Korean</option>
+            <option value="NanumGothic">Nanum Gothic</option>
+            <option value="NanumMyeongjo">Nanum Myeongjo</option>
+            <option value="GothicA1">Gothic A1</option>
+            <option value="NanumGothicCoding">Nanum Gothic Coding</option>
+            <option value="NanumPenScript">Nanum Pen Script</option>
+            <option value="BlackHanSans">Black Han Sans</option>
+            <option value="NanumBrushScript">Nanum Brush Script</option>
+            <option value="IBMPlexSans">IBM Plex Sans KR</option>
+        </select>
+    </div>
+    <div class="letter-display" id="letterDisplay">Your text with the selected font</div>
+
+    <script>
+        function selectFont() {
+            const fontSelect = document.getElementById('fontSelect');
+            const selectedFont = fontSelect.value;
+            const letterDisplay = document.getElementById('letterDisplay');
+            letterDisplay.style.fontFamily = selectedFont;
+
+            // Dynamically load font file
+            const fontFile = `fonts/${selectedFont}-Regular.ttf`;
+
+            // Set the font-face style directly
+            const fontFaceStyle = `
+                @font-face {
+                    font-family: '${selectedFont}';
+                    src: local('${selectedFont}'), url('${fontFile}') format('truetype');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+            `;
+
+            // Create a style element and append it to the head
+            const styleElement = document.createElement('style');
+            styleElement.textContent = fontFaceStyle;
+            document.head.appendChild(styleElement);
+
+            // Update the displayed text with the new font
+            const textInput = document.querySelector('.text-box');
+            const text = textInput.value;
+            letterDisplay.textContent = text;
+        }
+
+
+        // Removed the show button and added logic to show the letter with the chosen font automatically
+        const textInput = document.querySelector('.text-box');
+        const letterDisplay = document.getElementById('letterDisplay');
+
+        textInput.addEventListener('input', function () {
+            const text = this.value;
+            letterDisplay.textContent = text;
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set the default font on page load
+            selectFont();
+        });
+
+        // Next Step Button
+        const nextButton = document.querySelector('.next-button');
+        nextButton.addEventListener('click', function () {
+            // Add logic to navigate to the next step, passing the selected font
+            // For example, you can use window.location.href = 'next_step.html?font=' + selectedFont;
+            alert('Navigate to the next step with font: ' + fontSelect.value);
+        });
+    </script>
+    <a href="generate.html">
+        <button class="next-button">Next Step</button>
+    </a>
+</body>
+
+</html>

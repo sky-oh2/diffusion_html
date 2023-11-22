@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Handwritten Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .title-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-item {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .selected {
+            border: 2px solid #3498db;
+        }
+
+        .next-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #2976be;
+        }
+
+        .instructions {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="main.html" class="title-link">
+        <h1 class="title-label">Design Your Logo</h1>
+    </a>
+    <p class="instructions">Choose an image to proceed to the next step.</p>
+    <div class="image-container" id="imageContainer">
+        <img src="hand_8images/hand1.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand2.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand3.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand4.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand5.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand6.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand7.png" class="image-item" onclick="selectImage(this)">
+        <img src="hand_8images/hand8.png" class="image-item" onclick="selectImage(this)">
+    </div>
+    <a href="generate.html">
+        <button class="next-button">Next Step</button>
+    </a>
+
+    <script>
+        function selectImage(element) {
+            // Remove the 'selected' class from all images
+            var images = document.querySelectorAll('.image-item');
+            images.forEach(function (img) {
+                img.classList.remove('selected');
+            });
+
+            // Add the 'selected' class to the clicked image
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+
+</html>
